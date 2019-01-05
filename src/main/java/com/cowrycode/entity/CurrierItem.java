@@ -6,6 +6,7 @@
 package com.cowrycode.entity;
 
 import com.cowrycode.config.AbstractEntityListener;
+import java.time.LocalDateTime;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -46,6 +47,40 @@ public class CurrierItem  extends AbstractEntity{
     
     @OneToOne
     private DispatchRider dispatchRider;
+    
+    @OneToOne
+    private User sender;
+    
+    @OneToOne
+    private User reciever;
+    
+    private LocalDateTime deliveredOn;
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReciever() {
+        return reciever;
+    }
+
+    public void setReciever(User reciever) {
+        this.reciever = reciever;
+    }
+
+    public LocalDateTime getDeliveredOn() {
+        return deliveredOn;
+    }
+
+    public void setDeliveredOn(LocalDateTime deliveredOn) {
+        this.deliveredOn = deliveredOn;
+    }
+    
+    
 
     public DeliveryMode getDeliveryMode() {
         return deliveryMode;
